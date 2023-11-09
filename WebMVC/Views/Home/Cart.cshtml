@@ -1,0 +1,43 @@
+﻿
+
+<table class="table" id="cart-table">
+    <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Fiyat</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</table>
+
+<button id="clear-cart-button" class="btn btn-danger">Sepeti Sıfırla</button>
+
+
+<script>
+    // Sepeti localstorage'dan al
+    const storedCart = localStorage.getItem('cart');
+    const cart = storedCart ? JSON.parse(storedCart) : [];
+
+    // Sepeti tabloyla görüntüle
+    const cartTable = document.getElementById('cart-table');
+    const cartBody = cartTable.querySelector('tbody');
+
+    cart.forEach(product => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+                <td>${product.Name}</td>
+                <td>${product.Price}</td>
+            `;
+        cartBody.appendChild(row);
+    });
+
+    const clearCartButton = document.getElementById('clear-cart-button');
+    clearCartButton.addEventListener('click', () => {
+        // Sepeti temizle
+        localStorage.removeItem('cart');
+        // Sepet tablosunu temizle
+        cartBody.innerHTML = '';
+    });
+</script>

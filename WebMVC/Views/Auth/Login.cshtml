@@ -1,0 +1,14 @@
+﻿@model Entity.DTOs.UserLoginDto
+
+<h2>Giriş Yap</h2>
+<form asp-controller="Auth" asp-action="Login" method="post">
+    <div class="form-group">
+        <label asp-for="Email">E-posta</label>
+        <input type="email" asp-for="Email" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Şifre</label>
+        <input type="password" asp-for="Password" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary" value="Login">Giriş Yap</button>
+</form>
